@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz de Química — Descubra seu perfil | Prof. Almir Vieira</title>
+  <meta name="description" content="Faça o quiz e descubra exatamente o que você precisa para passar em Química no ENEM ou vestibular de Medicina.">
+  <meta property="og:title" content="Qual é o seu perfil de estudante de Química?">
+  <meta property="og:description" content="7 perguntas rápidas. Diagnóstico personalizado. Aprovação no ENEM ou Medicina.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- SCREEN: Intro -->
+  <div id="screen-intro" class="screen active">
+    <div class="screen__container intro__container">
+      <div class="intro__brand">
+        <svg class="intro__atom" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="24" cy="24" rx="20" ry="8" stroke="#1D9E75" stroke-width="1.5" fill="none"/>
+          <ellipse cx="24" cy="24" rx="20" ry="8" stroke="#1D9E75" stroke-width="1.5" fill="none" transform="rotate(60 24 24)"/>
+          <ellipse cx="24" cy="24" rx="20" ry="8" stroke="#1D9E75" stroke-width="1.5" fill="none" transform="rotate(120 24 24)"/>
+          <circle cx="24" cy="24" r="3.5" fill="#1D9E75"/>
+          <circle cx="44" cy="24" r="2" fill="#5DCAA5"/>
+        </svg>
+        <span class="intro__brand-name">Prof. Almir Vieira</span>
+      </div>
+
+      <div class="intro__hero">
+        <h1 class="intro__headline">Descubra seu perfil de estudante de Química</h1>
+        <p class="intro__sub">Responda 7 perguntas e receba um diagnóstico personalizado + o caminho exato para sua aprovação.</p>
+      </div>
+
+      <div class="intro__badges">
+        <span class="cred-badge"><span class="cred-badge__icon">⏱</span> Menos de 2 min</span>
+        <span class="cred-badge"><span class="cred-badge__icon">🏆</span> +30 mil aprovados</span>
+        <span class="cred-badge"><span class="cred-badge__icon">🎯</span> 100% gratuito</span>
+      </div>
+
+      <button id="btn-start" class="cta-btn cta-btn--primary">
+        Descobrir meu perfil <span class="btn-arrow">→</span>
+      </button>
+
+      <p class="intro__footer">Prof. Almir Vieira — Química USP</p>
+    </div>
+  </div>
+
+  <!-- SCREEN: Question -->
+  <div id="screen-question" class="screen">
+    <div class="progress-bar">
+      <div id="progress-fill" class="progress-bar__fill"></div>
+    </div>
+
+    <div class="screen__container question__container">
+      <header class="question__header">
+        <div class="intro__brand intro__brand--small">
+          <svg class="intro__atom intro__atom--small" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <ellipse cx="24" cy="24" rx="20" ry="8" stroke="#1D9E75" stroke-width="1.5" fill="none"/>
+            <ellipse cx="24" cy="24" rx="20" ry="8" stroke="#1D9E75" stroke-width="1.5" fill="none" transform="rotate(60 24 24)"/>
+            <ellipse cx="24" cy="24" rx="20" ry="8" stroke="#1D9E75" stroke-width="1.5" fill="none" transform="rotate(120 24 24)"/>
+            <circle cx="24" cy="24" r="3.5" fill="#1D9E75"/>
+            <circle cx="44" cy="24" r="2" fill="#5DCAA5"/>
+          </svg>
+          <span class="intro__brand-name">Prof. Almir Vieira</span>
+        </div>
+        <div class="question__counter">
+          <div class="counter__wrap">
+            <span id="counter-display" class="counter__current">1</span>
+          </div>
+          <span class="counter__total">/7</span>
+        </div>
+      </header>
+
+      <div id="question-card" class="question-card">
+        <div class="question-card__num-wrap">
+          <span id="question-num-deco" class="question-card__num-deco">01</span>
+        </div>
+        <p id="question-text" class="question-card__text"></p>
+        <p id="question-subtitle" class="question-card__sub"></p>
+        <div id="option-grid" class="option-grid"></div>
+      </div>
+
+      <button id="btn-next" class="cta-btn cta-btn--primary" disabled>
+        Próxima pergunta <span class="btn-arrow">→</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- SCREEN: Email Capture -->
+  <div id="screen-email" class="screen">
+    <div class="screen__container email__container">
+      <div class="email__icon">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="4" y="10" width="40" height="28" rx="4" stroke="#1D9E75" stroke-width="2" fill="none"/>
+          <path d="M4 16l20 12 20-12" stroke="#1D9E75" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h2 class="email__title">Seu resultado está pronto!</h2>
+      <p class="email__sub">Coloca seu email aqui e eu te mando o diagnóstico completo + um material exclusivo de Química gratuito.</p>
+
+      <form id="email-form" class="email-form" novalidate>
+        <div class="form-field">
+          <label class="form-field__label" for="input-name">Seu nome</label>
+          <input id="input-name" class="form-field__input" type="text" placeholder="Como posso te chamar?" autocomplete="given-name">
+        </div>
+        <div class="form-field">
+          <label class="form-field__label" for="input-email">Seu melhor email</label>
+          <input id="input-email" class="form-field__input" type="email" placeholder="seu@email.com" autocomplete="email">
+        </div>
+        <button id="btn-see-result" type="submit" class="cta-btn cta-btn--primary" disabled>
+          Ver meu resultado <span class="btn-arrow">→</span>
+        </button>
+      </form>
+
+      <a id="btn-skip" class="skip-link" href="#">Prefiro ver sem cadastrar</a>
+
+      <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Analisando seu perfil...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN: Result -->
+  <div id="screen-result" class="screen">
+    <div class="screen__container result__container">
+      <div class="result__header">
+        <div id="profile-badge" class="profile-badge"></div>
+        <h2 id="result-title" class="result__title"></h2>
+        <p id="result-desc" class="result__desc"></p>
+      </div>
+
+      <div class="diag__section">
+        <h3 class="diag__heading">Seu diagnóstico</h3>
+        <div id="diag-list" class="diag-list"></div>
+      </div>
+
+      <div class="products__section">
+        <div class="products__divider">
+          <span>Recomendado para você</span>
+        </div>
+        <div id="product-primary" class="product-card product-card--primary"></div>
+        <div id="product-alt" class="product-card product-card--alt"></div>
+      </div>
+
+      <a id="btn-retake" class="retake-link" href="#">↺ Refazer o quiz</a>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
