@@ -6,19 +6,29 @@
 const QUESTIONS = [
   {
     text: 'Qual é o seu objetivo principal agora?',
-    subtitle: 'Seja honesto — isso vai definir o caminho certo para você.',
+    subtitle: 'Seja honesto, isso vai definir o caminho certo para você.',
     options: [
       { value: 'enem',  icon: '🎯', title: 'Passar no ENEM em 2026',          desc: 'Quero entrar numa universidade pública' },
       { value: 'med',   icon: '🩺', title: 'Passar em Medicina',               desc: 'Meu sonho é cursar Medicina nas melhores faculdades' },
       { value: 'base',  icon: '📚', title: 'Melhorar minha nota em Química',   desc: 'Tô com dificuldade e quero entender de vez' },
-      { value: 'retry', icon: '🔁', title: 'Nova tentativa — já fiz o ENEM',   desc: 'Quero resultados melhores desta vez' },
+      { value: 'retry', icon: '🔁', title: 'Nova tentativa, já fiz o ENEM',   desc: 'Quero resultados melhores desta vez' },
+    ],
+  },
+  {
+    text: 'Quando você vê alguém sendo aprovado em Medicina, você pensa:',
+    subtitle: 'Seja honesto, essa resposta revela muito sobre onde você está agora.',
+    options: [
+      { value: 'believe',   icon: '💪', title: 'Eu também consigo',                              desc: 'Tenho convicção que meu caminho é esse' },
+      { value: 'far',       icon: '😔', title: 'Ainda estou longe disso',                        desc: 'Parece um objetivo difícil de alcançar' },
+      { value: 'uncertain', icon: '🤔', title: 'Estou tentando, mas não sei se estou no caminho', desc: 'Faço minha parte, mas a dúvida bate às vezes' },
+      { value: 'strategy',  icon: '🧭', title: 'Preciso estudar de forma mais estratégica',      desc: 'Sei que consigo, mas falta o método certo' },
     ],
   },
   {
     text: 'Como você se sente em relação à Química hoje?',
-    subtitle: 'Sem julgamentos — essa resposta vai te ajudar muito.',
+    subtitle: 'Sem julgamentos, essa resposta vai te ajudar muito.',
     options: [
-      { value: 'zero',  icon: '😰', title: 'Trava total — não entendo nada',        desc: 'Quando vejo a matéria, bate aquele desespero' },
+      { value: 'zero',  icon: '😰', title: 'Trava total, não entendo nada',        desc: 'Quando vejo a matéria, bate aquele desespero' },
       { value: 'mid',   icon: '😕', title: 'Entendo um pouco, mas travo nas contas', desc: 'A teoria vai, mas os cálculos me perdem' },
       { value: 'apply', icon: '🤔', title: 'Entendo a teoria, mas erro nas provas',  desc: 'Estudo bastante, mas na hora H erro' },
       { value: 'ok',    icon: '💪', title: 'Tenho uma base razoável',               desc: 'Só preciso de método e foco no que cai' },
@@ -26,9 +36,9 @@ const QUESTIONS = [
   },
   {
     text: 'Quanto tempo você dedica aos estudos de Química por semana?',
-    subtitle: 'Média real — não o ideal que você gostaria de estudar.',
+    subtitle: 'Média real, não o ideal que você gostaria de estudar.',
     options: [
-      { value: 't0', icon: '😬', title: 'Quase nenhum — menos de 1 hora', desc: 'Fica difícil encaixar na rotina' },
+      { value: 't0', icon: '😬', title: 'Quase nenhum, menos de 1 hora', desc: 'Fica difícil encaixar na rotina' },
       { value: 't1', icon: '📖', title: 'Entre 1 e 3 horas',             desc: 'Estudo quando dá, mas poderia ser mais constante' },
       { value: 't2', icon: '⏰', title: 'Entre 3 e 6 horas',             desc: 'Tenho uma rotina, mas sinto que poderia render mais' },
       { value: 't3', icon: '🔥', title: 'Mais de 6 horas',               desc: 'Estudo bastante, mas o resultado não tá aparecendo' },
@@ -38,7 +48,7 @@ const QUESTIONS = [
     text: 'Qual dessas situações mais te identifica quando estuda?',
     subtitle: 'Aquela que mais acontece no seu dia a dia.',
     options: [
-      { value: 'video',  icon: '🎥', title: 'Assisto vídeo atrás de vídeo e não fixo nada', desc: 'Parece que entra por um ouvido e sai pelo outro' },
+      { value: 'video',  icon: '🎥', title: 'Assisto vídeo aulas e não fixo nada', desc: 'Parece que entra por um ouvido e sai pelo outro' },
       { value: 'pdf',    icon: '📄', title: 'Acumulo PDF e apostila, mas raramente leio',    desc: 'Arquivo tudo mas a leitura não acontece' },
       { value: 'lost',   icon: '😵', title: 'Estudo sozinho e não sei se tô no caminho',     desc: 'Falta alguém para direcionar' },
       { value: 'method', icon: '✅', title: 'Sigo um método, mas preciso de mais',           desc: 'Tenho disciplina, mas falta profundidade' },
@@ -56,22 +66,22 @@ const QUESTIONS = [
   },
   {
     text: 'O que mais te trava nos estudos de Química?',
-    subtitle: 'Escolha o principal — o que faz você travar de verdade.',
+    subtitle: 'Escolha o principal, o que faz você travar de verdade.',
     options: [
-      { value: 'calc',    icon: '🧮', title: 'Os cálculos e fórmulas',           desc: 'Estequiometria, mol, concentração — travei aqui' },
-      { value: 'theory',  icon: '🧪', title: 'A teoria e os conceitos',          desc: 'Ligação química, funções, reações — tudo parece abstrato' },
-      { value: 'interp',  icon: '📝', title: 'Interpretar as questões do ENEM',  desc: 'Sei a matéria mas não entendo o que a prova pede' },
-      { value: 'anxiety', icon: '🧠', title: 'Ansiedade e bloqueio mental',       desc: 'Quando bate o nervoso, tudo que estudei some' },
+      { value: 'calc',    icon: '🧮', title: 'Os cálculos e as fórmulas de Química',           desc: 'Estequiometria, mol, concentração, travei aqui' },
+      { value: 'theory',  icon: '🧪', title: 'A teoria e os conceitos',          desc: 'Ligação química, funções, reações, tudo parece abstrato' },
+      { value: 'interp',  icon: '📝', title: 'Interpretar as questões de MED',  desc: 'Sei a matéria mas não entendo o que a prova pede' },
+      { value: 'anxiety', icon: '🧠', title: 'Ansiedade e nervosismo',       desc: 'Quando bate o nervoso, tudo que estudei some' },
     ],
   },
   {
-    text: 'Se você pudesse ter uma coisa agora para mudar seus resultados, o que seria?',
-    subtitle: 'Última pergunta — essa vai personalizar sua recomendação.',
+    text: 'Se você pudesse mudar uma coisa hoje nos seus estudos de Química, o que mais faria diferença?',
+    subtitle: 'Aquela mudança que faria você evoluir mais rápido.',
     options: [
-      { value: 'plan',     icon: '🗺️', title: 'Um plano claro e organizado',         desc: 'Saber exatamente o que estudar e em qual ordem' },
-      { value: 'teacher',  icon: '👨‍🏫', title: 'Um professor que explique do jeito certo', desc: 'Alguém que fale a minha língua' },
-      { value: 'material', icon: '📊', title: 'Material focado no que cai no ENEM',   desc: 'Sem enrolação — só o que é cobrado de verdade' },
-      { value: 'support',  icon: '🤝', title: 'Acompanhamento quando eu travar',      desc: 'Ter alguém pra tirar dúvida quando precisar' },
+      { value: 'plan',     icon: '🗺️', title: 'Saber exatamente o que estudar',         desc: 'Sem perder tempo com o que quase não cai' },
+      { value: 'teacher',  icon: '👨‍🏫', title: 'Ter alguém que explique de forma simples', desc: 'Sem fazer Química parecer impossível' },
+      { value: 'material', icon: '🎯', title: 'Focar no que realmente cai nas provas',   desc: 'Mais estratégia, menos enrolação' },
+      { value: 'support',  icon: '🤝', title: 'Ter acompanhamento quando eu travar',      desc: 'Sem ficar perdido(a) estudando sozinho(a)' },
     ],
   },
 ];
@@ -558,20 +568,6 @@ function buildProductCard(el, data, isPrimary) {
   desc.className = 'product-card__desc';
   desc.textContent = data.desc;
 
-  const priceRow = document.createElement('div');
-  priceRow.className = 'product-card__price-row';
-
-  const price = document.createElement('span');
-  price.className = 'product-card__price';
-  price.textContent = data.price;
-
-  const installments = document.createElement('span');
-  installments.className = 'product-card__installments';
-  installments.textContent = data.installments;
-
-  priceRow.appendChild(price);
-  priceRow.appendChild(installments);
-
   const btn = document.createElement('a');
   btn.className = isPrimary ? 'cta-btn cta-btn--primary' : 'cta-btn cta-btn--outline';
   btn.href = data.url;
@@ -582,7 +578,6 @@ function buildProductCard(el, data, isPrimary) {
   el.appendChild(badge);
   el.appendChild(name);
   el.appendChild(desc);
-  el.appendChild(priceRow);
   el.appendChild(btn);
 }
 
