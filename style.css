@@ -617,7 +617,7 @@ input {
 
 /* Loading overlay */
 .loading-overlay {
-  position: absolute;
+  position: fixed;
   inset: 0;
   background: rgba(13, 13, 13, 0.92);
   display: flex;
@@ -625,8 +625,7 @@ input {
   align-items: center;
   justify-content: center;
   gap: 16px;
-  z-index: 20;
-  border-radius: 16px;
+  z-index: 100;
   opacity: 0;
   pointer-events: none;
   transition: opacity 250ms var(--ease);
@@ -927,7 +926,7 @@ input {
 @media (min-width: 600px) {
   .screen {
     padding: 32px 24px 56px;
-    align-items: center;
+    align-items: safe center;
   }
 
   .intro__container {
@@ -959,6 +958,6 @@ input {
   }
 
   .result__title {
-    font-size: 26px;
+    font-size: 22px;
   }
 }
