@@ -48,9 +48,9 @@ const QUESTIONS = [
     text: 'Qual dessas situações mais te identifica quando estuda?',
     subtitle: 'Aquela que mais acontece no seu dia a dia.',
     options: [
-      { value: 'video',  icon: '🎥', title: 'Assisto vídeo aulas e não fixo nada', desc: 'Parece que entra por um ouvido e sai pelo outro' },
-      { value: 'pdf',    icon: '📄', title: 'Acumulo PDF e apostila, mas raramente leio',    desc: 'Arquivo tudo mas a leitura não acontece' },
-      { value: 'lost',   icon: '😵', title: 'Estudo sozinho e não sei se tô no caminho',     desc: 'Falta alguém para direcionar' },
+      { value: 'video',  icon: '🎥', title: 'Assisto a videoaulas e não fixo nada', desc: 'Parece que entra por um ouvido e sai pelo outro' },
+      { value: 'pdf',    icon: '📄', title: 'Acumulo PDFs e apostilas, mas raramente leio',    desc: 'Arquivo tudo, mas a leitura não acontece' },
+      { value: 'lost',   icon: '😵', title: 'Estudo sozinho e não sei se estou no caminho',     desc: 'Falta alguém para direcionar' },
       { value: 'method', icon: '✅', title: 'Sigo um método, mas preciso de mais',           desc: 'Tenho disciplina, mas falta profundidade' },
     ],
   },
@@ -90,7 +90,7 @@ const PROFILES = {
   med_high: {
     badgeClass: 'profile-badge--blue',
     badgeLabel: 'Candidato a Medicina',
-    title: 'Você tem o perfil certo — falta o método correto',
+    title: 'Você tem o perfil certo, falta o método correto',
     desc: 'Seu objetivo é claro e sua motivação é alta. O que está faltando é uma preparação especializada que fale a língua dos vestibulares de Medicina. Com o direcionamento certo, sua aprovação está muito mais perto do que parece.',
     diagnosis: [
       { label: 'Motivação',        pct: 92, color: 'green' },
@@ -120,8 +120,11 @@ const PROFILES = {
   enem_focus: {
     badgeClass: 'profile-badge--green',
     badgeLabel: 'Foco no ENEM 2026',
-    title: 'Você tem potencial — só precisa de método e foco',
-    desc: 'A maioria dos erros no ENEM não é por falta de inteligência, é por falta de método. Você estuda, mas sente que poderia render muito mais. Com as estratégias certas, sua nota em Química pode transformar sua média geral.',
+    title: 'Você tem potencial, só precisa de método e foco',
+    desc: `Você tem potencial, só precisa de método e foco. A maioria dos erros no ENEM não acontece por falta de esforço, acontece por falta de método. Você estuda, se dedica, mas sente que poderia render muito mais.
+    E isso tem um motivo claro.
+    Sem estratégia, o estudo não vira acerto de prova.
+    Quando você aprende a estudar do jeito certo, com direção e foco no que a banca realmente cobra, sua nota em Química começa a subir de verdade e isso impacta diretamente sua média geral.`,
     diagnosis: [
       { label: 'Motivação',        pct: 78, color: 'green' },
       { label: 'Base de Química',  pct: 42, color: 'amber' },
@@ -150,8 +153,8 @@ const PROFILES = {
   base_build: {
     badgeClass: 'profile-badge--amber',
     badgeLabel: 'Construindo a Base',
-    title: 'Toda aprovação começa pelo começo — e isso é bom',
-    desc: 'Você ainda está construindo sua base, e reconhecer isso é o primeiro passo mais inteligente que existe. Quem constrói uma base sólida em Química tem desempenho superior na reta final. Não é tarde — é a hora certa.',
+    title: 'Toda aprovação começa pelo começo, e isso é bom',
+    desc: 'Você ainda está construindo sua base, e reconhecer isso é o primeiro passo mais inteligente que existe. Quem constrói uma base sólida em Química tem desempenho superior na reta final. Não é tarde, é a hora certa.',
     diagnosis: [
       { label: 'Motivação',        pct: 65, color: 'amber' },
       { label: 'Base de Química',  pct: 22, color: 'red'   },
@@ -278,7 +281,9 @@ function resizeCanvas() {
    ============================================================ */
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
+  const next = document.getElementById(id);
+  next.classList.add('active');
+  next.scrollTop = 0;
   appState.currentScreen = id;
 }
 
